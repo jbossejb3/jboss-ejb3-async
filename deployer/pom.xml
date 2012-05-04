@@ -32,7 +32,6 @@
     <version.org.jboss.arquillian>1.0.0.Alpha2</version.org.jboss.arquillian>
     <version.org.jboss.deployers.jboss_deployers_spi>2.2.0.Alpha4</version.org.jboss.deployers.jboss_deployers_spi>
     <version.org.jboss.kernel>2.2.0.Alpha10</version.org.jboss.kernel>
-    <version.org.jboss.metadata_jboss.metadata>1.0.4</version.org.jboss.metadata_jboss.metadata>
     <version.org.jboss.bootstrap>2.1.0-alpha-5</version.org.jboss.bootstrap>
     <version.org.jboss.reloaded>0.1.2</version.org.jboss.reloaded>
     <version.org.jboss.threads>2.0.0.CR4</version.org.jboss.threads>
@@ -58,7 +57,6 @@
     <dependency>
       <groupId>org.jboss.kernel</groupId>
       <artifactId>jboss-kernel</artifactId>
-      <version>${version.org.jboss.kernel}</version>
       <scope>provided</scope>
     </dependency>
     <dependency>
@@ -71,7 +69,6 @@
     <dependency>
       <groupId>org.jboss.bootstrap</groupId>
       <artifactId>jboss-bootstrap-impl-mc</artifactId>
-      <version>${version.org.jboss.bootstrap}</version>
       <scope>test</scope>
     </dependency>
     
@@ -80,24 +77,6 @@
       <artifactId>jboss-reloaded-vdf-bootstrap-minimal</artifactId>
       <version>${version.org.jboss.reloaded}</version>
       <scope>test</scope>
-    </dependency>
-    
-    <dependency>
-      <groupId>org.jboss.metadata</groupId>
-      <artifactId>jboss-metadata</artifactId>
-      <version>${version.org.jboss.metadata_jboss.metadata}</version>
-      <scope>provided</scope>
-      <!-- Correct versions should come in through Reloaded or Deployers -->
-      <exclusions>
-        <exclusion>
-          <groupId>org.jboss</groupId>
-          <artifactId>jboss-vfs</artifactId>
-        </exclusion>
-        <exclusion>
-          <groupId>org.jboss</groupId>
-          <artifactId>jboss-mdr</artifactId>
-        </exclusion>
-      </exclusions>
     </dependency>
     
     <dependency>
@@ -138,13 +117,11 @@
     <dependency>
       <groupId>org.jboss.shrinkwrap</groupId>
       <artifactId>shrinkwrap-api</artifactId>
-      <version>${version.org.jboss.shrinkwrap}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.jboss.shrinkwrap</groupId>
       <artifactId>shrinkwrap-impl-base</artifactId>
-      <version>${version.org.jboss.shrinkwrap}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
@@ -155,4 +132,83 @@
     </dependency>
   
   </dependencies>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>javassist</groupId>
+        <artifactId>javassist</artifactId>
+        <version>3.11.0.GA</version>
+      </dependency>
+
+      <dependency>
+        <groupId>log4j</groupId>
+        <artifactId>log4j</artifactId>
+        <version>1.2.15</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.jboss</groupId>
+        <artifactId>jboss-vfs</artifactId>
+        <version>3.0.0.CR5</version>
+      </dependency>
+
+      <!-- problem in org.jboss.deployers -->
+      <dependency>
+        <groupId>org.jboss.cl</groupId>
+        <artifactId>jboss-classloader</artifactId>
+        <version>2.2.0.Alpha4</version>
+      </dependency>
+
+      <!-- problem in org.jboss.deployers -->
+      <dependency>
+        <groupId>org.jboss.cl</groupId>
+        <artifactId>jboss-classloading-vfs</artifactId>
+        <version>2.2.0.Alpha4</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.jboss.bootstrap</groupId>
+        <artifactId>jboss-bootstrap-impl-mc</artifactId>
+        <version>${version.org.jboss.bootstrap}</version>
+      </dependency>
+
+      <!-- problem in org.jboss.deployers -->
+      <dependency>
+        <groupId>org.jboss.integration</groupId>
+        <artifactId>jboss-classloading-spi</artifactId>
+        <version>6.0.0-Alpha8</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.jboss.kernel</groupId>
+        <artifactId>jboss-dependency</artifactId>
+        <version>${version.org.jboss.kernel}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.jboss.kernel</groupId>
+        <artifactId>jboss-kernel</artifactId>
+        <version>${version.org.jboss.kernel}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.jboss.shrinkwrap</groupId>
+        <artifactId>shrinkwrap-api</artifactId>
+        <version>${version.org.jboss.shrinkwrap}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.jboss.shrinkwrap</groupId>
+        <artifactId>shrinkwrap-impl-base</artifactId>
+        <version>${version.org.jboss.shrinkwrap}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.jboss.shrinkwrap</groupId>
+        <artifactId>shrinkwrap-spi</artifactId>
+        <version>${version.org.jboss.shrinkwrap}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 </project>

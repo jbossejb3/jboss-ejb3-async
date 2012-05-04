@@ -29,8 +29,6 @@
   
     <!-- Versioning -->
     <version.org.jboss.aspects_jboss.aspects.common>1.0.0.Beta1</version.org.jboss.aspects_jboss.aspects.common>
-    <version.org.jboss.aop_jboss-aop>2.1.1.GA</version.org.jboss.aop_jboss-aop>
-    <version.org.jboss.javaee_jboss.ejb.api_3.1>1.0-alpha-1</version.org.jboss.javaee_jboss.ejb.api_3.1>
     <version.org.jboss.ejb3_jboss.ejb3.interceptors>1.0.0</version.org.jboss.ejb3_jboss.ejb3.interceptors>
     <version.org.jboss.security_jboss.security>2.0.2.SP6</version.org.jboss.security_jboss.security>
     <version.org.jboss.javaee_jboss.jacc.api>1.1.0.GA</version.org.jboss.javaee_jboss.jacc.api>
@@ -51,20 +49,22 @@
       <version>${project.version}</version>
     </dependency>
     
-    <!-- org.jboss.javaee:jboss-ejb-api_3.1 -->
-    <dependency>
-      <groupId>org.jboss.javaee</groupId>
-      <artifactId>jboss-ejb-api_3.1</artifactId>
-      <version>${version.org.jboss.javaee_jboss.ejb.api_3.1}</version>
-      <scope>provided</scope>
-    </dependency>
-    
     <!-- org.jboss.ejb3:jboss-ejb3-interceptors -->
     <dependency>
       <groupId>org.jboss.ejb3</groupId>
       <artifactId>jboss-ejb3-interceptors</artifactId>
       <version>${version.org.jboss.ejb3_jboss.ejb3.interceptors}</version>
       <scope>provided</scope>
+      <exclusions>
+        <exclusion>
+          <groupId>org.jboss.javaee</groupId>
+          <artifactId>jboss-ejb-api</artifactId>
+        </exclusion>
+        <exclusion>
+          <groupId>org.jboss.metadata</groupId>
+          <artifactId>jboss-metadata</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     
     <dependency>
@@ -89,7 +89,6 @@
     <dependency>
       <groupId>org.jboss.aop</groupId>
       <artifactId>jboss-aop</artifactId>
-      <version>${version.org.jboss.aop_jboss-aop}</version>
       <scope>provided</scope>
     </dependency>
     
@@ -105,7 +104,6 @@
     <dependency>
       <groupId>org.jboss.security</groupId>
       <artifactId>jboss-security-spi</artifactId>
-      <version>${version.org.jboss.security_jboss.security}</version>
       <scope>provided</scope>
     </dependency>
     
@@ -145,6 +143,11 @@
       <scope>test</scope>
     </dependency>
     
+    <dependency>
+      <groupId>${javax.ejb.groupId}</groupId>
+      <artifactId>${javax.ejb.artifactId}</artifactId>
+      <scope>provided</scope>
+    </dependency>
   </dependencies>
   
   <dependencyManagement>

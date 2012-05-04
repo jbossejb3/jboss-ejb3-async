@@ -30,7 +30,6 @@
   
     <!-- Versioning -->
     <version.org.jboss.metadata.ejb>2.0.0-alpha-24</version.org.jboss.metadata.ejb>
-    <version.org.jboss.security>2.0.2.SP6</version.org.jboss.security>
   
   </properties>
 
@@ -56,11 +55,22 @@
       <groupId>org.jboss.metadata</groupId>
       <artifactId>jboss-metadata-ejb</artifactId>
       <version>${version.org.jboss.metadata.ejb}</version>
+      <exclusions>
+        <!-- bug in jboss-metadata-ejb pom -->
+        <exclusion>
+          <groupId>org.jboss.javaee</groupId>
+          <artifactId>jboss-ejb-api</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
     <dependency>
        <groupId>org.jboss.security</groupId>
        <artifactId>jboss-security-spi</artifactId>
-       <version>${version.org.jboss.security}</version>
+    </dependency>
+    <dependency>
+       <groupId>org.jboss.spec.javax.interceptor</groupId>
+       <artifactId>jboss-interceptors-api_1.1_spec</artifactId>
+       <version>1.0.1.Final</version>
     </dependency>
     
   </dependencies>
